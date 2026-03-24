@@ -1,5 +1,6 @@
 package com.film.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,5 +37,11 @@ public class Film {
 
     private LocalDateTime last_update;
 
+
+
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "language_id")
+    private Language language;
     // Getters & Setters
 }

@@ -5,7 +5,7 @@ import com.film.repository.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Sort;
+
 import java.util.List;
 
 @Service
@@ -35,5 +35,10 @@ public class FilmService {
         return filmRepository.findAll(PageRequest.of(page, size)).getContent();
     }
 
+
+
+    public List<Film> getFilmsByLanguageName(String name) {
+        return filmRepository.findByLanguage_Name(name);
+    }
 
 }

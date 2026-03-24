@@ -38,4 +38,12 @@ public class FilmController {
         return filmService.getFilmsWithPagination(page, size);
     }
 
+    @GetMapping("/by-language-name")
+    public List<Film> getFilmsByLanguageName(@RequestParam String name) {
+        return filmService.getFilmsByLanguageName(name);
+    }
+    @GetMapping("/with-language")
+    public List<Film> getAllFilmsWithLanguage() {
+        return filmService.getAllFilms();
+    }
 }
