@@ -2,6 +2,9 @@ package com.film.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import org.springframework.cglib.core.Local;
+
+import java.time.LocalDateTime;
 
 @Data
 public class RentalDTO
@@ -15,7 +18,7 @@ public class RentalDTO
     @NotNull(message = "Inventory Id is required")
     private Integer staffId;
     @NotNull(message = "Inventory Id is required")
-    private String rentalDate;
-    private String returnDate;
+    private LocalDateTime rentalDate;
+    private LocalDateTime returnDate;
 
 }

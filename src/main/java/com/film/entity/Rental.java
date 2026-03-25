@@ -24,9 +24,9 @@ public class Rental
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-//    @ManyToOne
-//    @JoinColumn(name = staff_id)
-//    private Staff staff;
+    @ManyToOne
+    @JoinColumn(name = "staff_id")
+    private Staff staff;
 
     @Column(name = "return_date")
     private LocalDateTime returnDate;
@@ -60,31 +60,31 @@ public class Rental
         this.customer = customer;
     }
 
-//    public Staff getStaff() {
-//        return staff;
-//    }
-//
-//    public void setStaff(Staff staff) {
-//        this.staff = staff;
-//    }
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
 
     public LocalDateTime getReturnDate() {
         return returnDate;
     }
 
-//    public void setReturnDate(LocalDateTime returnDate) {
-//        this.returnDate = returnDate;
-//    }
+    public void setReturnDate(LocalDateTime returnDate) {
+        this.returnDate = returnDate;
+    }
 
     public LocalDateTime getLastUpdate()
     {
         return lastUpdate;
     }
 
-//    public void setLastUpdate(LocalDateTime lastUpdate)
-//    {
-//        this.lastUpdate = lastUpdate;
-//    }
+    public void setLastUpdate(LocalDateTime lastUpdate)
+    {
+        this.lastUpdate = lastUpdate;
+    }
 
     public Integer getRentalId()
     {

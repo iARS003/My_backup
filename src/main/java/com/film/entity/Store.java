@@ -10,10 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import jakarta.persistence.*;
-<<<<<<< HEAD
-=======
 
->>>>>>> 926415b36346809b85c60055ddc3c702ac7219a0
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

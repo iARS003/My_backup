@@ -33,7 +33,13 @@ public class RentalService
         dto.setInventoryId(r.getInventory().getInventoryId());
         dto.setCustomerId(r.getCustomer().getCustomerId());
         dto.setStaffId(r.getStaff().getStaffId());
+
+        dto.setRentalDate(r.getRentalDate());
+
+        if(r.getReturnDate()!=null)
+        {
+            dto.setReturnDate(r.getReturnDate());
+        }
+        return dto;
     }
-//    r.getRentalDate().toString()
-//    dto.setRentalDate(r.getRentalDate());
 }

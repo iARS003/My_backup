@@ -19,9 +19,9 @@ public class Payment
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-//    @ManyToOne
-//    @JoinColumn(name = "staff_id")
-//    private Staff staff;
+    @ManyToOne
+    @JoinColumn(name = "staff_id")
+    private Staff staff;
 
     @ManyToOne
     @JoinColumn(name = "rental_id")
@@ -51,14 +51,14 @@ public class Payment
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-//
-//    public Staff getStaff() {
-//        return staff;
-//    }
-//
-//    public void setStaff(Staff staff) {
-//        this.staff = staff;
-//    }
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
 
     public Rental getRental() {
         return rental;
