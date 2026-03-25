@@ -15,10 +15,10 @@ public class Payment
     @Column(name = "payment_id")
     private Integer paymentId;
 
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id")
-//    private Customer customer;
-//
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
 //    @ManyToOne
 //    @JoinColumn(name = "staff_id")
 //    private Staff staff;
@@ -44,13 +44,13 @@ public class Payment
         this.paymentId = paymentId;
     }
 
-//    public Customer getCustomer() {
-//        return customer;
-//    }
-//
-//    public void setCustomer(Customer customer) {
-//        this.customer = customer;
-//    }
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 //
 //    public Staff getStaff() {
 //        return staff;

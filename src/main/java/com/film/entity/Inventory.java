@@ -19,9 +19,9 @@ public class Inventory
     @JoinColumn(name = "film_id")
     private Film film;
 
-//    @ManyToOne
-//    @JoinColumn(name = "store_id")
-//    private Store store;
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
 
     @Column(name = "last_update", insertable = false, updatable = false)
     private LocalDateTime lastUpdate;
@@ -33,22 +33,22 @@ public class Inventory
     public void setFilm(Film film) {
         this.film = film;
     }
-//
-//    public Store getStore() {
-//        return store;
-//    }
-//
-//    public void setStore(Store store) {
-//        this.store = store;
-//    }
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
 
     public LocalDateTime getLastUpdate() {
         return lastUpdate;
     }
 
-//    public void setLastUpdate(LocalDateTime lastUpdate) {
-//        this.lastUpdate = lastUpdate;
-//    }
+    public void setLastUpdate(LocalDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
 
     public Integer getInventoryId() {
         return inventoryId;

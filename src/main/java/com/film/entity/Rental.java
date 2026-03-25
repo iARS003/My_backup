@@ -20,9 +20,9 @@ public class Rental
     @JoinColumn(name="inventory_id")
     private Inventory inventory;
 
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id")
-//    private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
 //    @ManyToOne
 //    @JoinColumn(name = staff_id)
@@ -52,14 +52,14 @@ public class Rental
         this.inventory = inventory;
     }
 
-//    public Customer getCustomer() {
-//        return customer;
-//    }
-//
-//    public void setCustomer(Customer customer) {
-//        this.customer = customer;
-//    }
-//
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
 //    public Staff getStaff() {
 //        return staff;
 //    }
