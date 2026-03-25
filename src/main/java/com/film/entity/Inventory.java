@@ -1,18 +1,20 @@
 package com.film.entity;
 
 import jakarta.persistence.*;
-
+import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "inventory")
-public class Inventory
-{
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+public class Inventory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inventory_id")
     private Integer inventoryId;
 
+<<<<<<< Updated upstream
 //    @ManyToOne
 //    @JoinColumn(name = "film_id")
 //    private Film film;
@@ -57,3 +59,20 @@ public class Inventory
     }
 
 }
+=======
+    // FK: inventory.film_id → film.film_id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "film_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_inventory_film"))
+    private Film film;
+
+    // FK: inventory.store_id → store.store_id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_inventory_store"))
+    private Store store;
+
+    @Column(name = "last_update", insertable = false, updatable = false)
+    private LocalDateTime lastUpdate;
+}
+>>>>>>> Stashed changes
