@@ -6,42 +6,49 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.Year;
 import java.time.LocalDateTime;
-@Setter
+
 @Getter
+@Setter
 @Entity
 @Table(name = "film")
 public class Film {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer film_id;
+    @Column(name = "film_id")
+    private Integer filmId;
 
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    private Integer release_year;
+    @Column(name = "release_year")
+    private Integer releaseYear;
 
-    private BigDecimal rental_rate;
+    @Column(name = "rental_rate")
+    private BigDecimal rentalRate;
 
+    @Column(name = "length")
     private Integer length;
 
-    private BigDecimal replacement_cost;
+    @Column(name = "replacement_cost")
+    private BigDecimal replacementCost;
 
+    @Column(name = "rating")
     private String rating;
 
-    private String special_features;
+    @Column(name = "special_features")
+    private String specialFeatures;
 
-    private LocalDateTime last_update;
+    @Column(name = "last_update")
+    private LocalDateTime lastUpdate;
 
-
-
+    // FK: film.language_id → language.language_id
     @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "language_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "language_id", nullable = false)
     private Language language;
-    // Getters & Setters
 }
