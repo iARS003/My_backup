@@ -1,9 +1,10 @@
 package com.film.controller;
 
 
-import com.film.dto.ActorRequest;
+import com.film.dto.ActorDTO;
 import com.film.entity.Actor;
-import com.film.service.ActorService;
+import com.film.services.ActorService;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -34,7 +35,7 @@ public class ActorController {
  
     // POST /api/v1/actors
     @PostMapping
-    public ResponseEntity<Actor> createActor(@Valid @RequestBody ActorRequest request) {
+    public ResponseEntity<Actor> createActor(@Valid @RequestBody ActorDTO request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(actorService.createActor(request));
     }
  
@@ -42,7 +43,7 @@ public class ActorController {
     @PutMapping("/{id}")
     public ResponseEntity<Actor> replaceActor(
             @PathVariable Integer id,
-            @Valid @RequestBody ActorRequest request) {
+            @Valid @RequestBody ActorDTO request) {
         return ResponseEntity.ok(actorService.replaceActor(id, request));
     }
  
@@ -50,7 +51,7 @@ public class ActorController {
     @PatchMapping("/{id}")
     public ResponseEntity<Actor> patchActor(
             @PathVariable Integer id,
-            @RequestBody ActorRequest request) {
+            @RequestBody ActorDTO request) {
         return ResponseEntity.ok(actorService.patchActor(id, request));
     }
 }

@@ -1,5 +1,5 @@
 package com.film.services;
 
-public class Demo {
+public class StoreService {
 
 }

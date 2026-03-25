@@ -1,5 +1,15 @@
 package com.film.repository;
 
-public interface StoreRepository {
+import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.film.entity.Store;
+
+@Repository
+public interface StoreRepository extends JpaRepository<Store, Integer>{
+	
+	Optional<Store> findByUsingManagerStaffId (Integer managerStaffId);
+	boolean existsByManagerStaffId (Integer managerStaffId);
 }

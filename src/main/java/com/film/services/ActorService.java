@@ -1,6 +1,6 @@
-package com.film.service;
+package com.film.services;
 
-import com.film.dto.ActorRequest;
+import com.film.dto.ActorDTO;
 import com.film.entity.Actor;
 import com.film.exception.ResourceNotFoundException;
 import com.film.repository.ActorRepository;
@@ -29,7 +29,7 @@ public class ActorService {
     }
  
     @Transactional
-    public Actor createActor(ActorRequest request) {
+    public Actor createActor(ActorDTO request) {
         Actor actor = Actor.builder()
                 .firstName(request.firstName())
                 .lastName(request.lastName())
@@ -39,7 +39,7 @@ public class ActorService {
     }
  
     @Transactional
-    public Actor replaceActor(Integer id, ActorRequest request) {
+    public Actor replaceActor(Integer id, ActorDTO request) {
         Actor actor = getActorById(id);
         actor.setFirstName(request.firstName());
         actor.setLastName(request.lastName());
@@ -48,7 +48,7 @@ public class ActorService {
     }
  
     @Transactional
-    public Actor patchActor(Integer id, ActorRequest request) {
+    public Actor patchActor(Integer id, ActorDTO request) {
         Actor actor = getActorById(id);
         if (request.firstName() != null) actor.setFirstName(request.firstName());
         if (request.lastName() != null)  actor.setLastName(request.lastName());

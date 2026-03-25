@@ -1,23 +1,23 @@
 package com.film.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Entity
+@Table(name = "category")
 @Getter
 @Setter
-@Entity
-@Table(name = "language")
-public class Language {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "language_id")
-    private Integer languageId;
+    @Column(name = "category_id")
+    private Integer categoryId;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -25,8 +25,7 @@ public class Language {
     @Column(name = "last_update")
     private LocalDateTime lastUpdate;
 
-    // One Language → Many Films
-    @JsonManagedReference
-    @OneToMany(mappedBy = "language", fetch = FetchType.LAZY)
+    // Many-to-Many with Film
+    @ManyToMany(mappedBy = "categories")
     private List<Film> films;
 }
