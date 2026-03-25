@@ -42,11 +42,13 @@ public class Rental
         this.rentalDate = rentalDate;
     }
 
-    public Inventory getInventory() {
+    public Inventory getInventory()
+    {
         return inventory;
     }
 
-    public void setInventory(Inventory inventory) {
+    public void setInventory(Inventory inventory)
+    {
         this.inventory = inventory;
     }
 
@@ -74,19 +76,23 @@ public class Rental
 //        this.returnDate = returnDate;
 //    }
 
-    public LocalDateTime getLastUpdate() {
+    public LocalDateTime getLastUpdate()
+    {
         return lastUpdate;
     }
 
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
+//    public void setLastUpdate(LocalDateTime lastUpdate)
+//    {
+//        this.lastUpdate = lastUpdate;
+//    }
 
-    public Integer getRentalId() {
+    public Integer getRentalId()
+    {
         return rentalId;
     }
 
-    public void setRentalId(Integer rentalId) {
+    public void setRentalId(Integer rentalId)
+    {
         this.rentalId = rentalId;
     }
 }

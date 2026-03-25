@@ -3,6 +3,8 @@ package com.film.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import com.film.entity.Film;
+
 
 @Entity
 @Table(name = "inventory")
@@ -13,10 +15,10 @@ public class Inventory
     @Column(name = "inventory_id")
     private Integer inventoryId;
 
-//    @ManyToOne
-//    @JoinColumn(name = "film_id")
-//    private Film film;
-//
+    @ManyToOne
+    @JoinColumn(name = "film_id")
+    private Film film;
+
 //    @ManyToOne
 //    @JoinColumn(name = "store_id")
 //    private Store store;
@@ -24,13 +26,13 @@ public class Inventory
     @Column(name = "last_update", insertable = false, updatable = false)
     private LocalDateTime lastUpdate;
 
-//    public Film getFilm() {
-//        return film;
-//    }
-//
-//    public void setFilm(Film film) {
-//        this.film = film;
-//    }
+    public Film getFilm() {
+        return film;
+    }
+
+    public void setFilm(Film film) {
+        this.film = film;
+    }
 //
 //    public Store getStore() {
 //        return store;

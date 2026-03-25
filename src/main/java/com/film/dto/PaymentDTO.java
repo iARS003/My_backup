@@ -1,64 +1,31 @@
 package com.film.dto;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Data
 public class PaymentDTO
 {
     private Integer paymentId;
+
+    @NotNull(message = "Customer ID is required")
     private Integer customerId;
+
+    @NotNull(message = "Customer ID is required")
     private Integer staffId;
+
+    @NotNull(message = "Rental ID is required")
     private Integer rentalId;
+
+    @NotNull(message = "Amount is required")
+    @Positive(message = "Amount must be greater than 0")
     private BigDecimal amount;
-    private String paymentDate;
 
-    public Integer getPaymentId() {
-        return paymentId;
-    }
+    @NotNull(message = "Payment date is required")
+    private LocalDateTime paymentDate;
 
-    public void setPaymentId(Integer paymentId) {
-        this.paymentId = paymentId;
-    }
-
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
-
-    public Integer getStaffId() {
-        return staffId;
-    }
-
-    public void setStaffId(Integer staffId) {
-        this.staffId = staffId;
-    }
-
-    public Integer getRentalId() {
-        return rentalId;
-    }
-
-    public void setRentalId(Integer rentalId) {
-        this.rentalId = rentalId;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public String getPaymentDate() {
-        return paymentDate;
-    }
-
-    public void setPaymentDate(String paymentDate) {
-        this.paymentDate = paymentDate;
-    }
 }

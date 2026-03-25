@@ -1,4 +1,4 @@
-package com.film.service;
+package com.film.services;
 
 import java.util.List;
 import java.util.stream.Collectors;
