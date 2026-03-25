@@ -1,4 +1,4 @@
-package com.film.service;
+package com.film.services;
 
 public class StoreService {
 

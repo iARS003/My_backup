@@ -1,6 +1,5 @@
 package com.film.entity;
 
-<<<<<<< HEAD
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -9,9 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-=======
+
 import jakarta.persistence.*;
->>>>>>> 71ee69fa78d3149b1a3cef3346686763a76f28b3
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

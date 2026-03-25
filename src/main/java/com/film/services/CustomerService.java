@@ -1,4 +1,4 @@
-package com.film.service;
+package com.film.services;
 
 import org.springframework.stereotype.Service;
 
