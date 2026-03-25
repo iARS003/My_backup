@@ -2,14 +2,11 @@ package com.film.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "country")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Country {
 
     @Id
@@ -21,5 +18,5 @@ public class Country {
     private String country;
 
     @Column(name = "last_update", insertable = false, updatable = false)
-    private Timestamp lastUpdate;
+    private LocalDateTime lastUpdate;
 }

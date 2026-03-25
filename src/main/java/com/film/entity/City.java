@@ -1,16 +1,12 @@
 package com.film.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "city")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class City {
 
     @Id
@@ -21,11 +17,12 @@ public class City {
     @Column(name = "city", nullable = false, length = 50)
     private String city;
 
+    // FK: city.country_id → country.country_id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id", nullable = false,
-                foreignKey = @ForeignKey(name = "fk_city_country"))
+            foreignKey = @ForeignKey(name = "fk_city_country"))
     private Country country;
 
     @Column(name = "last_update", insertable = false, updatable = false)
-    private Timestamp lastUpdate;
+    private LocalDateTime lastUpdate;
 }

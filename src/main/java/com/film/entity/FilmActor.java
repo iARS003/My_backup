@@ -1,30 +1,37 @@
 package com.film.entity;
 
-import java.security.Timestamp;
+import jakarta.persistence.*;
+import lombok.*;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.Table;
-
+// Surrogate PK used instead of composite key.
+// Unique constraint enforces the original PK (actor_id, film_id).
 @Entity
-@Table(name = "film_actor")
+@Table(name = "film_actor",
+        uniqueConstraints = @UniqueConstraint(
+                name = "uk_film_actor",
+                columnNames = {"actor_id", "film_id"}
+        ))
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class FilmActor {
 
-    @EmbeddedId
-    private Actor id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-    @ManyToOne
-    @MapsId("actorId")
-    @JoinColumn(name = "actor_id")
+    // FK: film_actor.actor_id → actor.actor_id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "actor_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_film_actor_actor"))
     private Actor actor;
 
-    @ManyToOne
-    @MapsId("filmId")
-    @JoinColumn(name = "film_id")
+    // FK: film_actor.film_id → film.film_id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "film_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_film_actor_film"))
     private Film film;
 
-    private Timestamp lastUpdate;
+    @Column(name = "last_update", insertable = false, updatable = false)
+    private LocalDateTime lastUpdate;
 }
