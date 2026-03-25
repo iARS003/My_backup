@@ -1,54 +1,89 @@
 package com.film.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.*;
 import java.math.BigDecimal;
+import java.time.Year;
 import java.time.LocalDateTime;
-
-@Getter
+<<<<<<< Updated upstream
 @Setter
+@Getter
+=======
+import java.util.List;
+
+>>>>>>> Stashed changes
 @Entity
 @Table(name = "film")
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Film {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "film_id")
-    private Integer filmId;
+    private Integer film_id;
 
-    @Column(name = "title", nullable = false)
+<<<<<<< Updated upstream
+=======
+    @Column(name = "title", nullable = false, length = 128)
+>>>>>>> Stashed changes
     private String title;
 
-    @Column(name = "description", columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "release_year")
-    private Integer releaseYear;
+    private Integer release_year;
 
-    @Column(name = "rental_rate")
+<<<<<<< Updated upstream
+    private BigDecimal rental_rate;
+=======
+    // FK: film.language_id → language.language_id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "language_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_film_language"))
+    private Language language;
+
+    // FK: film.original_language_id → language.language_id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "original_language_id",
+            foreignKey = @ForeignKey(name = "fk_film_language_original"))
+    private Language originalLanguage;
+
+    @Column(name = "rental_duration", nullable = false)
+    private Short rentalDuration;
+
+    @Column(name = "rental_rate", nullable = false)
     private BigDecimal rentalRate;
+>>>>>>> Stashed changes
 
-    @Column(name = "length")
     private Integer length;
 
-    @Column(name = "replacement_cost")
+<<<<<<< Updated upstream
+    private BigDecimal replacement_cost;
+=======
+    @Column(name = "replacement_cost", nullable = false)
     private BigDecimal replacementCost;
+>>>>>>> Stashed changes
 
-    @Column(name = "rating")
     private String rating;
 
-    @Column(name = "special_features")
-    private String specialFeatures;
+    private String special_features;
 
-    @Column(name = "last_update")
-    private LocalDateTime lastUpdate;
+    private LocalDateTime last_update;
 
-    // FK: film.language_id → language.language_id
+
+
+<<<<<<< Updated upstream
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "language_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "language_id")
     private Language language;
+    // Getters & Setters
+=======
+    // Reverse: all FilmActor join records for this film
+    @OneToMany(mappedBy = "film", fetch = FetchType.LAZY)
+    private List<FilmActor> filmActors;
+
+    // Reverse: all FilmCategory join records for this film
+    @OneToMany(mappedBy = "film", fetch = FetchType.LAZY)
+    private List<FilmCategory> filmCategories;
+>>>>>>> Stashed changes
 }

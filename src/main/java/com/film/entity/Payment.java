@@ -1,90 +1,44 @@
 package com.film.entity;
 
-
 import jakarta.persistence.*;
-
+import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "payment")
-public class Payment
-{
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+public class Payment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
     private Integer paymentId;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
+    // FK: payment.customer_id → customer.customer_id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_payment_customer"))
     private Customer customer;
 
-    @ManyToOne
-    @JoinColumn(name = "staff_id")
+    // FK: payment.staff_id → staff.staff_id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "staff_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_payment_staff"))
     private Staff staff;
 
-    @ManyToOne
-    @JoinColumn(name = "rental_id")
+    // FK: payment.rental_id → rental.rental_id (nullable — SET NULL on delete)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rental_id",
+            foreignKey = @ForeignKey(name = "fk_payment_rental"))
     private Rental rental;
 
-    @Column(name = "amount")
+    @Column(name = "amount", nullable = false)
     private BigDecimal amount;
 
-    @Column(name = "payment_date")
+    @Column(name = "payment_date", nullable = false)
     private LocalDateTime paymentDate;
 
     @Column(name = "last_update", insertable = false, updatable = false)
     private LocalDateTime lastUpdate;
-
-    public Integer getPaymentId() {
-        return paymentId;
-    }
-
-    public void setPaymentId(Integer paymentId) {
-        this.paymentId = paymentId;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Staff getStaff() {
-        return staff;
-    }
-
-    public void setStaff(Staff staff) {
-        this.staff = staff;
-    }
-
-    public Rental getRental() {
-        return rental;
-    }
-
-    public void setRental(Rental rental) {
-        this.rental = rental;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public LocalDateTime getPaymentDate() {
-        return paymentDate;
-    }
-
-    public void setPaymentDate(LocalDateTime paymentDate) {
-        this.paymentDate = paymentDate;
-    }
-
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
 }
